@@ -24,11 +24,11 @@ you can get loss like:
 ```python
 loss = torch.L1Loss(y_pred, y_train)
 ```
-you only upload your loss, and this fucntion will do gardient desceent and backpropagation.
+you only upload your loss, and this fucntion will do gardient desceent and backpropagation automatically.
 
 ## extra-func
 you can invoke :es.save_model(model), es.load_model(model_class, modep_path)
-### 7. model:this model is what you write class by yourself which include the weight, bias,and inheriting nn.Model.
+### 7. model:this The model for this call is the model that you created the object in the first place
 ### 8. model_class: beacuse load the new model need creat the new object, so we need recreat the object
 
 ## reason of  writing this code
@@ -53,22 +53,22 @@ easily_stopper = es()
 ### 2. min_delta=float: 这是个主观的参数，你认为你减少多少损失适合你。(**如果你设置的太大了，将会导致"耐心"过早的消耗完** ) 
 ### 3. warmup=int:这个参数是ai加上去的，他认为前50次损失波动较大，我不确认这个是否知真的
 ### 4. saving_dict=string:哈哈，这个是我自己加上去的，因为我现在正在学习存储模型和加载模型，这个参数决定了你存放模型文件夹的名字，你可以起一个好听的名字.
-### 5. model_name="xxx.pth":this your model name. As we all know, deepseek-r1, llama, Qwen, this is the model name, you can name the "deepsearch" or "deepdig"
+### 5. model_name="xxx.pth":这个是你的模型名字. 类似的, deepseek-r1, llama, Qwen, 这个是他们的模型名字, 你可以给你的模型命名为"deepsearch" or "deepdig"
 ---
-### this the function of __call__ parameters
+### 这个是__call__函数的参数
 ### 6. loss:
-you can get loss like:
+你可以像这样获得你模型的损失
 ```python
 loss = torch.L1Loss(y_pred, y_train)
 ```
-you only upload your loss, and this fucntion will do gardient desceent and backpropagation.
+你只需要上传你的loss，然后这个函数会自动梯度下降和反向传播
 
-## extra-func
-you can invoke :es.save_model(model), es.load_model(model_class, modep_path)
-### 7. model:this model is what you write class by yourself which include the weight, bias,and inheriting nn.Model.
-### 8. model_class: beacuse load the new model need creat the new object, so we need recreat the object
+## 额外的函数
+你可以调用 :es.save_model(model), es.load_model(model_class, modep_path)
+### 7. model:这个调用的模型是你刚开始创建对象的模型
+### 8. model_class:因为加载一个新的模型需要创建一个新的对象，所以我们需要重新创建新的对象
 
-## reason of  writing this code
-Because I am learning Pytorch at present,this is a link of course[Pytorch](https://youtu.be/V_xro1bcAuA?si=b0_8yWiFXzLcFdnr).When I start the training loop, finding that the too many loops will waste possibly.For example,when I set the "epoch = 10000",but maybe it can achieve good fitting effect in 100times,and remaining times will consume mermory.**So, I want to design the programming to stop the loop previously.**(notice: I write the code with deepseekR1)
+## 写这个类的原因
+因为我目前正在学习Pytorch，这当然是一个链接[Pytorch]（https://youtu.be/V_xro1bcAuA?si=b0_8yWiFXzLcFdnr）。当我开始训练循环时，发现太多的循环可能会浪费时间。例如，当我设置“epoch = 10000”时，但可能100次就能达到很好的拟合效果，剩余的次数会消耗内存。所以，我想设计的程序，以停止循环之前。**（注意：我和deepseekR1一起写代码）
 
 
