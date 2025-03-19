@@ -1,6 +1,10 @@
 # a-simple-early_stopping-code/一个简单的早停代码
 ## notice: I`m not prefessional programmer and not being good at my English,so this will occur to lots of erros,if you find the errors or bugs,please tell me
 
+## ==the log of update!!!!!!==
+I creat a new class--Saving_and_loading,it can work out the errors of MODEL_SAVE_PATH.
+what you only need to input the two parameters can implement saving and loading model automatically,you can see following method if you want to learn more.
+
 
 ## 1.invoking the class
 ```python
@@ -32,12 +36,16 @@ you can invoke :es.save_model(model), es.load_model(model_class, modep_path)
 ### 7. model:this The model for this call is the model that you created the object in the first place
 ### 8. model_class: beacuse load the new model need creat the new object, so we need recreat the object
 
+
 ## reason of  writing this code
 Because I am learning Pytorch at present,this is a link of course[Pytorch](https://youtu.be/V_xro1bcAuA?si=b0_8yWiFXzLcFdnr).When I start the training loop, finding that the too many loops will waste possibly.For example,when I set the "epoch = 10000",but maybe it can achieve good fitting effect in 100times,and remaining times will consume mermory.**So, I want to design the programming to stop the loop previously.**(notice: I write the code with deepseekR1)
 
 
-## 一个简单的早停代码
 
+## 一个简单的早停代码
+## ==更新日志!!!!!!==
+我创建了一个类，这样就不会出现有关 MODEL_SAVE_PATH.的报错了
+你只需要传入两个参数就可以实现存储并载入模型，如果你想要了解更多，可以看一下下面的方法。
 
 ## 1.如何调用这个类
 ```python
