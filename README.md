@@ -1,4 +1,4 @@
-# a-simple-early_stopping-code-
+# a-simple-early_stopping-code/一个简单的早停代码
 
 
 ## 1.invoking the class
@@ -35,7 +35,7 @@ you can invoke :es.save_model(model), es.load_model(model_class, modep_path)
 Because I am learning Pytorch at present,this is a link of course[Pytorch](https://youtu.be/V_xro1bcAuA?si=b0_8yWiFXzLcFdnr).When I start the training loop, finding that the too many loops will waste possibly.For example,when I set the "epoch = 10000",but maybe it can achieve good fitting effect in 100times,and remaining times will consume mermory.**So, I want to design the programming to stop the loop previously.**(notice: I write the code with deepseekR1)
 
 
-# 一个简单的早停代码
+## 一个简单的早停代码
 
 
 ## 1.如何调用这个类
