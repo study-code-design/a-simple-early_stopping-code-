@@ -75,9 +75,9 @@ class EarlyStopping:
             model.load_state_dict(self.best_model_state)
             torch.save(obj=model.state_dict(), f=self.MODEL_SAVE_PATH)
 
-    def load_model(self, model_class,model_path):
+    def load_model(self, model_class):
         model = model_class()
-        model.load_state_dict(torch.load(f=model_path, weights_only=False))
+        model.load_state_dict(torch.load(f=self.MODEL_SAVE_PATH, weights_only=False))
         model.eval()
         return model
         
