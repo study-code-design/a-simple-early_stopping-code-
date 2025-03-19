@@ -1,4 +1,5 @@
 # a-simple-early_stopping-code/一个简单的早停代码
+## notice: I`m not prefessional programmer and not being good at my English,so this will occur to lots of erros,if you find the errors or bugs,please tell me
 
 
 ## 1.invoking the class
