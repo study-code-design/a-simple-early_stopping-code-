@@ -1,4 +1,4 @@
-![009BF2CA](https://github.com/user-attachments/assets/e3baadec-1f0b-4e8a-8875-519a88ac2b84)# a-simple-early_stopping-code-
+# a-simple-early_stopping-code-
 
 
 ## 1.invoking the class
