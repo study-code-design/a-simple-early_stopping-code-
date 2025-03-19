@@ -13,7 +13,7 @@ from pathlib import Path
 
 
 class EarlyStopping:
-    def __init__(self, patience=10, min_delta=0.001, warmup=50, saving_dict = "models", model_name = "01.pth"):
+    def __init__(self, patience=10, min_delta=0.001, warmup=50, saving_dict = "models", model_name = "01.pth",MODEL_SAVE_PATH = None):
         self.patience = patience
         self.min_delta = min_delta
         self.warmup = warmup  # 新增：前50轮不启动早停
@@ -22,9 +22,11 @@ class EarlyStopping:
         self.epoch = 0  # 新增：总训练轮次跟踪
         self.best_model_state = None
         self.MODEL_PATH = Path(saving_dict)
-        self.MODEL_SAVE_PATH.parent.mkdir(parents=True, exist_ok=True)
+
+        self.MODEL_PATH.parent.mkdir(parents=True, exist_ok=True)
 
         self.MODEL_SAVE_PATH = self.MODEL_PATH / model_name
+        
         
         
        
@@ -51,34 +53,21 @@ class EarlyStopping:
         
         return False
 
-    # def __call__(self, current_loss, model):
-    #     if abs(current_loss - self.best_loss) <= self.min_delta:
-    #         if self.save_path: # 保存路径是否存在
-    #             self.best_model_state = model.state_dict().copy() # 自动保存模型权重和偏差
-    #         return True
-    #     if current_loss < self.best_loss:
-    #         self.best_loss = current_loss.detach().item()
-    #         self.count = 0
-    #     else:
-    #         self.count += 1
-    #         if self.count >= self.patience:
-    #             return True
-        # print(current_loss, self.best_loss, abs(current_loss-self.best_loss))
-    #     return False
-    
-    
-
-
-
-    def save_model(self, model):
-        if self.best_model_state:
-            model.load_state_dict(self.best_model_state)
-            torch.save(obj=model.state_dict(), f=self.MODEL_SAVE_PATH)
-
-    def load_model(self, model_class):
-        model = model_class()
-        model.load_state_dict(torch.load(f=self.MODEL_SAVE_PATH, weights_only=False))
-        model.eval()
-        return model
         
     
+class Saving_and_loading():
+    def __init__(self, dict_name = "model", saving_path = "01.pth") -> None:
+        self.MODEL_PATH = Path(dict_name)
+        self.MODEL_PATH.mkdir(parents=True, exist_ok=True)
+        self.SAVING_PATH = saving_path
+
+    def save_model(self, model):
+        MODEL_SAVE_PATH = self.MODEL_PATH / self.SAVING_PATH
+        torch.save(obj=model.state_dict(), f=MODEL_SAVE_PATH)
+        
+    def load_model(self, model_class):
+        MODEL_SAVE_PATH = self.MODEL_PATH / self.SAVING_PATH
+        model = model_class()
+        model.load_state_dict(torch.load(f=MODEL_SAVE_PATH, weights_only=False))
+        model.eval()
+        return model
